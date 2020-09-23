@@ -28,8 +28,8 @@ class NetworkService {
             guard let data = data,
                 let news = try? JSONDecoder().decode(Response.self, from: data).data?.items else { return }
                 
-//            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//            dump(json)
+            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            dump(json)
             
             DispatchQueue.main.async {
                 completionHandler(news)

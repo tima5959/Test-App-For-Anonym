@@ -12,12 +12,10 @@ class MainViewControllerCell: UITableViewCell {
     
     static let reuseID = "MainViewControllerCell"
     
-    let bannerImage = UIImageView() // вроде просто картинка
-    let genderLabel = UILabel()
+    let avatarImage = UIImageView() // вроде просто картинка
     let nameLabel = UILabel()
-    let photo = UIImageView() // вроде аватарка
+    let createdTime = UILabel()
     
-    let likesLabel = UILabel()
     let contentPhoto = UIImageView()
     let contentValue = UILabel()
     
@@ -25,7 +23,7 @@ class MainViewControllerCell: UITableViewCell {
     let statsLikes = UILabel()
     let statsShares = UILabel()
     let statsViews = UILabel()
-    let createdTime = UILabel()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -47,12 +45,10 @@ class MainViewControllerCell: UITableViewCell {
 
 extension MainViewControllerCell {
     
+    
+    
     private func configureViews() {
-        contentView.addSubview(bannerImage)
-        contentView.addSubview(genderLabel)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(photo)
-        contentView.addSubview(likesLabel)
         contentView.addSubview(contentPhoto)
         contentView.addSubview(contentValue)
         contentView.addSubview(statsLikes)
@@ -61,11 +57,7 @@ extension MainViewControllerCell {
         contentView.addSubview(statsComments)
         contentView.addSubview(createdTime)
         
-        bannerImage.translatesAutoresizingMaskIntoConstraints = false
-        genderLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        photo.translatesAutoresizingMaskIntoConstraints = false
-        likesLabel.translatesAutoresizingMaskIntoConstraints = false
         contentPhoto.translatesAutoresizingMaskIntoConstraints = false
         contentValue.translatesAutoresizingMaskIntoConstraints = false
         statsLikes.translatesAutoresizingMaskIntoConstraints = false
@@ -74,11 +66,35 @@ extension MainViewControllerCell {
         statsComments.translatesAutoresizingMaskIntoConstraints = false
         createdTime.translatesAutoresizingMaskIntoConstraints = false
         
+        configureTitleLabels()
+    }
+    
+    func configureTitleLabels() {
+        nameLabel.numberOfLines = 0
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.textColor = .white
+        nameLabel.font = .preferredFont(forTextStyle: .headline)
+        nameLabel.text = "nameLabel.text"
+        
+        createdTime.numberOfLines = 0
+        createdTime.adjustsFontSizeToFitWidth = true
+        createdTime.textColor = .white
+        createdTime.font = .preferredFont(forTextStyle: .headline)
+        createdTime.text = "createdTime.text"
     }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-             
+            avatarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            avatarImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
+            avatarImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8),
+            
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            nameLabel.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 16),
+            
+            createdTime.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            createdTime.leftAnchor.constraint(equalTo: avatarImage.leftAnchor, constant: 16),
+            createdTime.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8),
         ])
     }
     
