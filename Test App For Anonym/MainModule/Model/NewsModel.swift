@@ -23,10 +23,25 @@ class News: Codable {
     let contents: [Content]?
     let language: Language?
     let awards: Awards?
+    let createdAt: Int?
+    let updatedAt: Int?
     let page: JSONNull?
     let author: Author?
     let stats: Stats?
     let isMyFavorite: Bool?
+    
+    func createdAt(timeIntervalSince1970: Int) -> String {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeZone = .current
+        let date = Date(timeIntervalSince1970: TimeInterval(timeIntervalSince1970))
+        
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
 }
 
 // MARK: - Author

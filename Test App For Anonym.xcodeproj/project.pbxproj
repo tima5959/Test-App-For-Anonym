@@ -96,9 +96,9 @@
 		B55D2F8A25193DC100AD5D35 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
-				B55D2F8925193DB300AD5D35 /* Controller */,
 				B55D2F8825193DAF00AD5D35 /* Model */,
 				B55D2F8625193DA100AD5D35 /* View */,
+				B55D2F8925193DB300AD5D35 /* Controller */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
